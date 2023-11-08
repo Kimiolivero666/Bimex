@@ -1,18 +1,19 @@
-const toggleBtn = document.querySelector(".toggle-btn")
-const toggleBtnIcon = document.querySelector(".toggle-btn i")
-const dropDownMenu = document.querySelector(".dropdown-menu")
+// Obtenemos los elementos necesarios
+const toggleBtn = document.querySelector(".toggle-btn");
+const dropDownMenu = document.querySelector(".dropdown-menu");
+const menuLinks = dropDownMenu.querySelectorAll("a");
 
-toggleBtn.onclick = function () {
-dropDownMenu.classList.toggle("open")
-const isOpen = dropDownMenu.classList.contains("open")
-
-toggleBtnIcon.classList = isOpen
-? "a-sharp fa-solid fa-bars"
-: "a-sharp fa-solid fa-bars"
-
+// Función para cerrar el menú
+function closeMenu() {
+  dropDownMenu.classList.remove("open");
 }
 
+// Evento clic para el botón
+toggleBtn.onclick = function () {
+  dropDownMenu.classList.toggle("open");
+};
 
-
-// carrusel servicios
-
+// Evento clic para cada enlace del menú
+menuLinks.forEach(function (link) {
+  link.addEventListener("click", closeMenu);
+});
